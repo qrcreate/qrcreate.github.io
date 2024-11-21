@@ -1,5 +1,3 @@
-getqr.js
-
 import {onClick,addScriptInHead,setInner} from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.3/element.js';
 import {getCookie,setCookieWithExpireDay} from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.1.3/cookie.js';
 
