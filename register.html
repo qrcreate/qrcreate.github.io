@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        /* Styling Global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Register Container */
+        .register-container {
+            display: flex;
+            max-width: 900px; /* Lebar lebih kecil */
+            width: 90%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Left Section: Register Form */
+        .register-form {
+            flex: 1;
+            padding: 40px; /* Lebih kecil */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-form h1 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.8em; /* Ukuran lebih kecil */
+        }
+
+        .register-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .register-form button {
+            background-color: #6c5ce7;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .register-form button:hover {
+            background-color: #5a4cc0;
+        }
+
+        .or-separator {
+            margin: 15px 0;
+            text-align: center;
+            color: #999;
+            position: relative;
+        }
+
+        .or-separator::before,
+        .or-separator::after {
+            content: "";
+            width: 40%;
+            height: 1px;
+            background-color: #ddd;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .or-separator::before {
+            left: 0;
+        }
+
+        .or-separator::after {
+            right: 0;
+        }
+
+        /* Google Login Button */
+        .google-login {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Sudah Punya Akun Section */
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .login-link-text {
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link-text:hover {
+            text-decoration: underline;
+            color: #5a4cc0;
+        }
+
+        /* Right Section: Graphic */
+        .register-graphic {
+            flex: 1;
+            background-color: #6c5ce7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-graphic img {
+            width: 80%;
+            max-width: 300px; /* Ukuran gambar lebih kecil */
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Register Container -->
+    <div class="register-container">
+        <!-- Left Section: Register Form -->
+        <div class="register-form">
+            <h1>Create Account</h1>
+            <p>Fill in the form to register.</p>
+
+            <!-- Input Nama, Email, Password -->
+            <input type="text" id="nameInput" placeholder="Enter your name" required>
+            <input type="email" id="emailInput" placeholder="Enter your email" required>
+            <input type="password" id="passwordInput" placeholder="Enter your password" required>
+            <input type="password" id="confirmPasswordInput" placeholder="Confirm your password" required>
+            <button onclick="register()">Register</button>
+
+            <!-- OR Separator -->
+            <div class="or-separator">OR</div>
+
+            <!-- Google Login -->
+            <div class="google-login">
+                <div id="g_id_onload"
+                     data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                     data-context="signup"
+                     data-ux_mode="popup"
+                     data-callback="handleCredentialResponse"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="signup_with" data-shape="rectangular"></div>
+            </div>
+
+            <!-- Sudah Punya Akun Section -->
+            <div class="login-link">
+                <p>Sudah punya akun? <a href="login.html" class="login-link-text">Masuk!</a></p>
+            </div>
+        </div>
+
+        <!-- Right Section: QR Code Graphic -->
+        <div class="register-graphic">
+            <img src="https://qrcodedynamic.com/themes/altum/assets/images/qr_code.svg" alt="QR Code Graphic">
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Fungsi Register Manual
+        function register() {
+            const name = document.getElementById("nameInput").value;
+            const email = document.getElementById("emailInput").value;
+            const password = document.getElementById("passwordInput").value;
+            const confirmPassword = document.getElementById("confirmPasswordInput").value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            // Placeholder registrasi manual
+            alert(`Account created successfully!\nName: ${name}\nEmail: ${email}`);
+        }
+
+        // Callback Google SSO
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            alert("Registration successful with Google!");
+        }
+    </script>
+</body>
+</html>
