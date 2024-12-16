@@ -5,33 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script>
-        var client;
-        var access_token;
-  
-        function initClient() {
-          client = google.accounts.oauth2.initTokenClient({
-            client_id: '239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com',
-            scope: 'https://www.googleapis.com/auth/calendar.readonly \
-                    https://www.googleapis.com/auth/contacts.readonly',
-            callback: (tokenResponse) => {
-              access_token = tokenResponse.access_token;
-            },
-          });
-        }
-        function getToken() {
-          client.requestAccessToken();
-        }
-        function revokeToken() {
-          google.accounts.oauth2.revoke(access_token, () => {console.log('access token revoked')});
-        }
-        function loadCalendar() {
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', 'https://www.googleapis.com/calendar/v3/calendars/primary/events');
-          xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
-          xhr.send();
-        }
-      </script>
     <style>
         /* Styling Global */
         * {
@@ -191,7 +164,7 @@
                      data-callback="handleCredentialResponse"
                      data-auto_prompt="false">
                 </div>
-                <div onclick="getToken();" class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="signup_with" data-shape="rectangular"></div>
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="signup_with" data-shape="rectangular"></div>
             </div>
 
             <!-- Sudah Punya Akun Section -->
