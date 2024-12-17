@@ -16,16 +16,16 @@
         font-family: Arial, sans-serif;
         background: url("https://static.vecteezy.com/system/resources/thumbnails/042/729/327/small/abstract-luxury-gradient-blue-background-free-photo.jpg")
           no-repeat center center fixed;
-        background-size: cover; /* Agar gambar penuh */
+        background-size: cover;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         color: white;
       }
 
-      /* Overlay untuk kontras teks */
+      /* Overlay */
       .overlay {
-        background: rgba(0, 0, 0, 0.5); /* Lapisan gelap transparan */
+        background: rgba(0, 0, 0, 0.5);
         min-height: 100vh;
         width: 100%;
         display: flex;
@@ -60,24 +60,31 @@
         background-color: #5a4cc0;
       }
 
-      /* Container */
+      /* Main Container */
       .container {
-        max-width: 800px;
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px;
         margin: 20px auto;
         padding: 20px;
         background: white;
         color: #333;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        text-align: center;
+      }
+
+      /* Left Content */
+      .left-content {
+        flex: 1;
+        padding-right: 20px;
       }
 
       h1 {
         margin-bottom: 20px;
         color: #333;
+        text-align: center;
       }
 
-      /* Tab Buttons */
       .tab-buttons {
         display: flex;
         justify-content: center;
@@ -98,7 +105,6 @@
         color: white;
       }
 
-      /* Tab Content */
       .tab-content {
         display: none;
       }
@@ -130,13 +136,24 @@
         background-color: #5a4cc0;
       }
 
+      /* QR Code Display */
+      .right-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid #ddd;
+        padding-left: 20px;
+      }
+
       #qrcode {
-        margin-top: 20px;
+        text-align: center;
+        margin-bottom: 10px;
       }
 
       #downloadBtn {
         display: none;
-        margin-top: 10px;
       }
 
       /* Footer */
@@ -163,39 +180,42 @@
 
       <!-- Main Container -->
       <div class="container">
-        <h1>Buat Kode QR</h1>
+        <!-- Left Content: Input & Buttons -->
+        <div class="left-content">
+          <h1>Buat Kode QR</h1>
 
-        <!-- Tab Buttons -->
-        <div class="tab-buttons">
-          <button class="tab-btn active" onclick="openTab('url')">URL</button>
-          <button class="tab-btn" onclick="openTab('document')">Dokumen</button>
-          <button class="tab-btn" onclick="openTab('signature')">Tanda Tangan</button>
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab('url')">URL</button>
+            <button class="tab-btn" onclick="openTab('document')">Dokumen</button>
+            <button class="tab-btn" onclick="openTab('signature')">Tanda Tangan</button>
+          </div>
+
+          <div id="url" class="tab-content active">
+            <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
+            <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
+            <button onclick="generateQRCode('url')">Buat QR Code</button>
+          </div>
+
+          <div id="document" class="tab-content">
+            <input type="file" id="docInput" accept=".pdf,.doc,.docx,.txt" />
+            <input type="text" id="docName" placeholder="Masukkan Nama QR Code Anda" />
+            <button onclick="generateQRCode('document')">Buat QR Code</button>
+          </div>
+
+          <div id="signature" class="tab-content">
+            <textarea id="signatureInput" placeholder="Masukkan tanda tangan Anda"></textarea>
+            <input type="text" id="signatureName" placeholder="Masukkan Nama QR Code Anda" />
+            <button onclick="generateQRCode('signature')">Buat QR Code</button>
+          </div>
         </div>
 
-        <!-- Input Content -->
-        <div id="url" class="tab-content active">
-          <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
-          <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
-          <button onclick="generateQRCode('url')">Buat QR Code</button>
+        <!-- Right Content: QR Code -->
+        <div class="right-content">
+          <div id="qrcode"></div>
+          <a id="downloadBtn" download="qrcode.png">
+            <button>Download QR Code</button>
+          </a>
         </div>
-
-        <div id="document" class="tab-content">
-          <input type="file" id="docInput" accept=".pdf,.doc,.docx,.txt" />
-          <input type="text" id="docName" placeholder="Masukkan Nama QR Code Anda" />
-          <button onclick="generateQRCode('document')">Buat QR Code</button>
-        </div>
-
-        <div id="signature" class="tab-content">
-          <textarea id="signatureInput" placeholder="Masukkan tanda tangan Anda"></textarea>
-          <input type="text" id="signatureName" placeholder="Masukkan Nama QR Code Anda" />
-          <button onclick="generateQRCode('signature')">Buat QR Code</button>
-        </div>
-
-        <!-- QR Code Display -->
-        <div id="qrcode"></div>
-        <a id="downloadBtn" download="qrcode.png">
-          <button>Download QR Code</button>
-        </a>
       </div>
 
       <!-- Footer -->
@@ -206,7 +226,6 @@
 
     <!-- QRious Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-
     <script>
       let qrCanvas;
 
