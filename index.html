@@ -4,178 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR Code Generator</title>
-    <style>
-      /* Styling Global */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background: url("https://static.vecteezy.com/system/resources/thumbnails/042/729/327/small/abstract-luxury-gradient-blue-background-free-photo.jpg")
-          no-repeat center center fixed;
-        background-size: cover;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        color: white;
-      }
-
-      /* Overlay */
-      .overlay {
-        background: rgba(0, 0, 0, 0.5);
-        min-height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Navbar */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: rgba(52, 58, 64, 0.9);
-        color: white;
-      }
-
-      .navbar h2 {
-        margin: 0;
-        font-size: 1.5em;
-      }
-
-      .navbar .nav-buttons a {
-        background-color: #6c5ce7;
-        color: white;
-        padding: 8px 15px;
-        margin-left: 10px;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-
-      .navbar .nav-buttons a:hover {
-        background-color: #5a4cc0;
-      }
-
-      /* Main Container */
-      .container {
-        display: flex;
-        justify-content: space-between;
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 20px;
-        background: white;
-        color: #333;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      }
-
-      /* Left Content */
-      .left-content {
-        flex: 1;
-        padding-right: 20px;
-      }
-
-      h1 {
-        margin-bottom: 20px;
-        color: #333;
-        text-align: center;
-      }
-
-      .tab-buttons {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-
-      .tab-buttons button {
-        background-color: #e0e0e0;
-        border: none;
-        padding: 10px 20px;
-        margin: 0 5px;
-        cursor: pointer;
-        border-radius: 5px;
-      }
-
-      .tab-buttons button.active {
-        background-color: #6c5ce7;
-        color: white;
-      }
-
-      .tab-content {
-        display: none;
-      }
-
-      .tab-content.active {
-        display: block;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      button {
-        background-color: #6c5ce7;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-top: 10px;
-      }
-
-      button:hover {
-        background-color: #5a4cc0;
-      }
-
-      /* QR Code Display */
-      .right-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-left: 1px solid #ddd;
-        padding-left: 20px;
-      }
-
-      #qrcode {
-        text-align: center;
-        margin-bottom: 10px;
-      }
-
-      #downloadBtn {
-        display: none;
-      }
-
-      /* Footer */
-      footer {
-        background-color: rgba(52, 58, 64, 0.9);
-        color: white;
-        padding: 20px;
-        margin-top: auto;
-        text-align: center;
-        font-size: 0.9em;
-      }
-    </style>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/home.css" />
   </head>
   <body>
-    <div class="overlay">
-      <!-- Navbar -->
-      <div class="navbar">
-        <h2>Logo</h2>
-        <div class="nav-buttons">
-          <a href="login.html">Login</a>
-          <a href="register.html">Register</a>
-        </div>
+    <!-- Navbar -->
+    <div class="navbar">
+      <h2>Logo</h2>
+      <div class="nav-buttons">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
       </div>
 
       <!-- Main Container -->
@@ -226,52 +64,7 @@
 
     <!-- QRious Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <script>
-      let qrCanvas;
 
-      // Fungsi untuk membuka tab
-      function openTab(tabName) {
-        const tabs = document.querySelectorAll(".tab-content");
-        const buttons = document.querySelectorAll(".tab-btn");
-
-        tabs.forEach((tab) => tab.classList.remove("active"));
-        buttons.forEach((button) => button.classList.remove("active"));
-
-        document.getElementById(tabName).classList.add("active");
-        event.currentTarget.classList.add("active");
-      }
-
-      // Fungsi Generate QR Code
-      function generateQRCode(type) {
-        let value = "";
-        let name = "";
-
-        if (type === "url") {
-          value = document.getElementById("urlInput").value;
-          name = document.getElementById("urlName").value;
-        }
-
-        if (!value || !name) {
-          alert("Harap isi data yang diperlukan dan nama QR Code.");
-          return;
-        }
-
-        const qrContainer = document.getElementById("qrcode");
-        qrContainer.innerHTML = `<h3>${name}</h3>`;
-
-        const qr = new QRious({
-          value: value,
-          size: 250,
-        });
-
-        qrContainer.appendChild(qr.canvas);
-        qrCanvas = qr.canvas;
-
-        const downloadBtn = document.getElementById("downloadBtn");
-        downloadBtn.style.display = "inline-block";
-        downloadBtn.href = qrCanvas.toDataURL("image/png");
-        downloadBtn.download = `${name}.png`;
-      }
-    </script>
+    <script src="js/home.js"></script>
   </body>
 </html>
