@@ -1,4 +1,4 @@
-import { postJSON } from './js/lib/api.js'; // Mengimpor fungsi postJSON dari library API
+import { postJSON } from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js'; // Mengimpor fungsi postJSON dari library API
 
 // Fungsi Login Manual
 document.addEventListener("DOMContentLoaded", function () {

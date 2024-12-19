@@ -1,4 +1,4 @@
-import { postJSON } from './js/lib/api.js'; // Sesuaikan path ke file Anda
+import { postJSON } from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js'; // Sesuaikan path ke file Anda
 
 // Fungsi Register Manual
 function register() {
