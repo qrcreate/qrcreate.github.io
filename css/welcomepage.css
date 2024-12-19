@@ -9,12 +9,50 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-
-.content {
-    width: 50%;
-    padding: 50px;
+  
+  /* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(52, 58, 64, 0.9);
+    color: white;
+    z-index: 1000;
 }
 
+  
+.navbar h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.navbar .nav-buttons {
+    margin-right: 30px; /* Geser tombol lebih ke kiri */
+}
+.navbar .nav-buttons a {
+    background-color: #6c5ce7;
+    color: white;
+    padding: 8px 15px;
+    margin-left: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+  
+.navbar .nav-buttons a:hover {
+    background-color: #5a4cc0;
+}
+   
+/* Tambahkan margin pada konten untuk menghindari navbar tumpang tindih */
+.content {
+    margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
+    width: 80%;
+    padding: 80px;
+}
 .content h1 {
     font-size: 3.1rem;
     color: #333;
