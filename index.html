@@ -33,6 +33,13 @@
           <div id="url" class="tab-content active">
             <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
             <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
+            
+            <!-- Toggle for Session or Permanent QR -->
+            <label>
+              <input type="checkbox" id="sessionToggle" />
+              Buat sebagai QR Session (Valid untuk beberapa menit)
+            </label>
+            
             <button onclick="generateQRCode('url')">Buat QR Code</button>
           </div>
 
@@ -67,6 +74,7 @@
     <!-- QRious Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
-    <script type = "module" scr="js/home.js"></script>
+    <!-- Home JS -->
+    <script type="module" src="js/home.js"></script>
   </body>
 </html>
