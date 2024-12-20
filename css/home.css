@@ -1,5 +1,5 @@
- /* Styling Global */
- * {
+/* Styling Global */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -157,4 +157,17 @@ footer {
   margin-top: auto;
   text-align: center;
   font-size: 0.9em;
+}
+
+/* Toggle Session Styling */
+label input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 0.9em;
+  color: #333;
 }
