@@ -25,33 +25,7 @@ body {
   flex-direction: column;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: rgba(52, 58, 64, 0.9);
-  color: white;
-}
 
-.navbar h2 {
-  margin: 0;
-  font-size: 1.5em;
-}
-
-.navbar .nav-buttons a {
-  background-color: #6c5ce7;
-  color: white;
-  padding: 8px 15px;
-  margin-left: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.navbar .nav-buttons a:hover {
-  background-color: #5a4cc0;
-}
 
 /* Main Container */
 .container {
@@ -149,16 +123,6 @@ button:hover {
   display: none;
 }
 
-/* Footer */
-footer {
-  background-color: rgba(52, 58, 64, 0.9);
-  color: white;
-  padding: 20px;
-  margin-top: auto;
-  text-align: center;
-  font-size: 0.9em;
-}
-
 /* Toggle Session Styling */
 label input[type="checkbox"] {
   margin-right: 10px;
@@ -170,4 +134,130 @@ label {
   margin: 10px 0;
   font-size: 0.9em;
   color: #333;
+}
+
+/* Footer Styles */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  display: none; /* Hide by default */
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.footer-menu {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+  transition: color 0.3s;
+}
+
+.menu-item i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.menu-item:hover {
+  color: #e91e63;
+}
+
+.menu-item span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Show footer only on mobile */
+@media (max-width: 768px) {
+  .footer {
+    display: flex;
+  }
+}
+
+/* Header Styling */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0); /* Transparan awal */
+  color: white;
+  z-index: 1000;
+  transition: background 0.3s ease-in-out; /* Animasi transisi */
+}
+
+/* Header Saat Scroll */
+.header.scrolled {
+  background: rgba(0, 0, 0, 0.7); /* Abu transparan */
+}
+/* Logo Container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 40px;
+  height: auto;
+}
+/* Menu Icons */
+.menu-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.menu-icons i {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+  cursor: pointer; /* Tambahkan cursor untuk ikon */
+}
+
+.menu-icons i:hover {
+  color: #007BFF;
+}
+.menu-links {
+  display: none;
+  position: absolute;
+  top: 40px; /* Posisi relatif ke ikon */
+  right: 0;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-links a {
+  display: block;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-links a:hover {
+  background-color: #f0f0f0;
+}
+.menu-links.active {
+  display: block;
 }
