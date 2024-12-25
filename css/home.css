@@ -25,33 +25,7 @@ body {
   flex-direction: column;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: rgba(52, 58, 64, 0.9);
-  color: white;
-}
 
-.navbar h2 {
-  margin: 0;
-  font-size: 1.5em;
-}
-
-.navbar .nav-buttons a {
-  background-color: #6c5ce7;
-  color: white;
-  padding: 8px 15px;
-  margin-left: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.navbar .nav-buttons a:hover {
-  background-color: #5a4cc0;
-}
 
 /* Main Container */
 .container {
@@ -233,4 +207,54 @@ label {
 .header.scrolled {
   background: rgba(0, 0, 0, 0.7); /* Abu transparan */
 }
+/* Logo Container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.logo-img {
+  width: 40px;
+  height: auto;
+}
+/* Menu Icons */
+.menu-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.menu-icons i {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+  cursor: pointer; /* Tambahkan cursor untuk ikon */
+}
+
+.menu-icons i:hover {
+  color: #007BFF;
+}
+.menu-links {
+  display: none; /* Sembunyikan menu secara default */
+  position: absolute;
+  top: 30px; /* Sesuaikan jarak dengan ikon */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-links a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.menu-links a:hover {
+  background-color: #f0f0f0;
+}

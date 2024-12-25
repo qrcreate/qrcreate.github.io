@@ -67,3 +67,24 @@ document.addEventListener("scroll", function () {
         header.classList.remove("scrolled");
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuIcon = document.querySelector(".menu-icons i");
+    const menuLinks = document.querySelector(".menu-links");
+  
+    menuIcon.addEventListener("click", function () {
+      if (menuLinks.style.display === "block") {
+        menuLinks.style.display = "none";
+      } else {
+        menuLinks.style.display = "block";
+      }
+    });
+  
+    // Opsional: Sembunyikan menu jika klik di luar area
+    document.addEventListener("click", function (event) {
+      if (!menuIcon.contains(event.target) && !menuLinks.contains(event.target)) {
+        menuLinks.style.display = "none";
+      }
+    });
+  });
+  
