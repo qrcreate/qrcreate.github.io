@@ -87,4 +87,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const menuLinks = document.getElementById("menuLinks");
+  
+    // Toggle menu
+    menuToggle.addEventListener("click", function () {
+      menuLinks.classList.toggle("active");
+    });
+  
+    // Close menu if clicking outside
+    document.addEventListener("click", function (event) {
+      if (!menuToggle.contains(event.target) && !menuLinks.contains(event.target)) {
+        menuLinks.classList.remove("active");
+      }
+    });
+  });
   

@@ -6,22 +6,25 @@
     <title>QR Code Generator</title>
     <!-- Link CSS -->
     <link rel="stylesheet" href="css/home.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="header" id="header">
       <div class="logo">
-          <img src="logo.png" alt="Logo" class="logo-img">
-          <p class="tagline"></p>
+        <img src="images/logo.png" alt="Logo" class="logo-img" />
+        <p class="tagline"></p>
       </div>
-      <<div class="menu-icons">
-        <i class="fas fa-bars"></i>
-        <div class="menu-links">
+      <div class="menu-icons">
+        <i class="fas fa-bars" id="menuToggle"></i>
+        <div class="menu-links" id="menuLinks">
           <a href="login.html">Login</a>
           <a href="register.html">Register</a>
         </div>
       </div>
-  </header>
+    </header>
     <div class="overlay">
       <!-- Main Container -->
       <div class="container">
@@ -38,26 +41,14 @@
           <div id="url" class="tab-content active">
             <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
             <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
-            
+
             <!-- Toggle for Session or Permanent QR -->
             <label>
               <input type="checkbox" id="sessionToggle" />
               Buat sebagai QR Session (Valid untuk beberapa menit)
             </label>
-            
+
             <button onclick="generateQRCode('url')">Buat QR Code</button>
-          </div>
-
-          <div id="document" class="tab-content">
-            <input type="file" id="docInput" accept=".pdf,.doc,.docx,.txt" />
-            <input type="text" id="docName" placeholder="Masukkan Nama QR Code Anda" />
-            <button onclick="generateQRCode('document')">Buat QR Code</button>
-          </div>
-
-          <div id="signature" class="tab-content">
-            <textarea id="signatureInput" placeholder="Masukkan tanda tangan Anda"></textarea>
-            <input type="text" id="signatureName" placeholder="Masukkan Nama QR Code Anda" />
-            <button onclick="generateQRCode('signature')">Buat QR Code</button>
           </div>
         </div>
 
@@ -85,13 +76,12 @@
           </a>
         </div>
       </footer>
-      
     </div>
 
     <!-- QRious Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
     <!-- Home JS -->
-    <script src="js/home.js"></script>
+    <script src="js/home.js" defer></script>
   </body>
 </html>
