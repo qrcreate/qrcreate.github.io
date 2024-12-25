@@ -144,7 +144,7 @@ export function addScriptInHead(src) {
       const script = document.createElement('script');
       script.src = src;
       script.onload = () => resolve(); // Resolves when script is loaded
-      script.onerror = () => reject(new Error(Failed to load script: ${src}));
+      script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
       document.head.appendChild(script);
     });
 }
