@@ -149,16 +149,6 @@ button:hover {
   display: none;
 }
 
-/* Footer */
-footer {
-  background-color: rgba(52, 58, 64, 0.9);
-  color: white;
-  padding: 20px;
-  margin-top: auto;
-  text-align: center;
-  font-size: 0.9em;
-}
-
 /* Toggle Session Styling */
 label input[type="checkbox"] {
   margin-right: 10px;
@@ -171,3 +161,76 @@ label {
   font-size: 0.9em;
   color: #333;
 }
+
+/* Footer Styles */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  display: none; /* Hide by default */
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.footer-menu {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+  transition: color 0.3s;
+}
+
+.menu-item i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.menu-item:hover {
+  color: #e91e63;
+}
+
+.menu-item span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Show footer only on mobile */
+@media (max-width: 768px) {
+  .footer {
+    display: flex;
+  }
+}
+
+/* Header Styling */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0); /* Transparan awal */
+  color: white;
+  z-index: 1000;
+  transition: background 0.3s ease-in-out; /* Animasi transisi */
+}
+
+/* Header Saat Scroll */
+.header.scrolled {
+  background: rgba(0, 0, 0, 0.7); /* Abu transparan */
+}
+
