@@ -25,19 +25,22 @@ body {
   flex-direction: column;
 }
 
-
-
-/* Main Container */
 .container {
   display: flex;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 20px auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px; /* Atur lebar maksimum */
+  margin: auto;
   padding: 20px;
   background: white;
   color: #333;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Left Content */
