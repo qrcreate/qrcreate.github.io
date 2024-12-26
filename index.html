@@ -24,39 +24,37 @@
         </div>
       </div>
     </header>
-   
-      <div class="container">
-        <div class="left-content">
+    <div class="container">
+      <!-- Form Input -->
+      <div class="left-content">
           <h1>Buat Kode QR</h1>
-
           <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openTab('url')">URL</button>
-            <button class="tab-btn" onclick="openTab('document')">Dokumen</button>
-            <button class="tab-btn" onclick="openTab('signature')">Tanda Tangan</button>
+              <button class="tab-btn active" onclick="openTab('url')">URL</button>
+              <button class="tab-btn" onclick="openTab('document')">Dokumen</button>
+              <button class="tab-btn" onclick="openTab('signature')">Tanda Tangan</button>
           </div>
-
+  
           <div id="url" class="tab-content active">
-            <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
-            <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
-
-            <!-- Toggle for Session or Permanent QR -->
-            <label>
-              <input type="checkbox" id="sessionToggle" />
-              Buat sebagai QR Session (Valid untuk beberapa menit)
-            </label>
-
-            <button onclick="generateQRCode('url')">Buat QR Code</button>
+              <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
+              <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
+  
+              <!-- Toggle for Session or Permanent QR -->
+              <label>
+                  <input type="checkbox" id="sessionToggle" />
+                  Buat sebagai QR Session (Valid untuk beberapa menit)
+              </label>
+  
+              <button onclick="generateQRCode('url')">Buat QR Code</button>
           </div>
-        </div>
-
-        <!-- Right Content: QR Code -->
-        <!-- <div class="right-content">
-          <div id="qrcode"></div>
-          <a id="downloadBtn" download="qrcode.png">
-            <button>Download QR Code</button>
-          </a>
-        </div> -->
       </div>
+  
+      <!-- QR Code Output -->
+      <div id="qrcode" style="display: none;">
+          <!-- QR code akan ditampilkan di sini -->
+          <button onclick="resetForm()">Buat QR Code Baru</button>
+      </div>
+  </div>
+
       <footer class="footer">
         <div class="footer-menu">
           <a href="index.html" class="menu-item">
