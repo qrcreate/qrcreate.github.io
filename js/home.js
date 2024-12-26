@@ -2,58 +2,77 @@ let qrCanvas;
 
 // Fungsi untuk membuka tab
 function openTab(tabName) {
-    const tabs = document.querySelectorAll(".tab-content");
-    const buttons = document.querySelectorAll(".tab-btn");
+  const tabs = document.querySelectorAll(".tab-content");
+  const buttons = document.querySelectorAll(".tab-btn");
 
-    tabs.forEach((tab) => tab.classList.remove("active"));
-    buttons.forEach((button) => button.classList.remove("active"));
+  // Sembunyikan semua tab dan hapus kelas aktif dari tombol
+  tabs.forEach((tab) => tab.classList.remove("active"));
+  buttons.forEach((button) => button.classList.remove("active"));
 
-    document.getElementById(tabName).classList.add("active");
-    event.currentTarget.classList.add("active");
+  // Tampilkan tab yang dipilih dan tambahkan kelas aktif ke tombolnya
+  document.getElementById(tabName).classList.add("active");
+  event.currentTarget.classList.add("active");
 }
+
 
 // Fungsi Generate QR Code
 function generateQRCode(type) {
   let value = "";
   let name = "";
-  const isSession = document.getElementById("sessionToggle").checked; // Periksa apakah session toggle aktif
 
   if (type === "url") {
-      value = document.getElementById("urlInput").value;
-      name = document.getElementById("urlName").value;
+    value = document.getElementById("urlInput").value;
+    name = document.getElementById("urlName").value;
+  } else if (type === "document") {
+    value = document.getElementById("documentInput").files[0];
+    name = document.getElementById("documentName").value;
+    if (!value) {
+      alert("Harap unggah dokumen.");
+      return;
+    }
+    value = URL.createObjectURL(value); // Buat URL untuk file dokumen
+  } else if (type === "signature") {
+    value = document.getElementById("signatureInput").value;
+    name = document.getElementById("signatureName").value;
   }
 
   if (!value || !name) {
-      alert("Harap isi data yang diperlukan dan nama QR Code.");
-      return;
+    alert("Harap isi data yang diperlukan dan nama QR Code.");
+    return;
   }
 
   const qrContainer = document.getElementById("qrcode");
-  qrContainer.innerHTML = `<h3>${name}</h3>`;
+  const nameElement = qrContainer.querySelector("h3");
+  nameElement.textContent = name;
 
-  // Logika QR berdasarkan toggle
-  if (isSession) {
-      // QR Session
-      const sessionValue = `${value}?session=${Date.now()}`; // Tambahkan timestamp sebagai simulasi session
-      createQRCode(qrContainer, sessionValue);
-  } else {
-      // QR Permanent
-      createQRCode(qrContainer, value);
+  // Hapus QR Code lama (jika ada)
+  const existingCanvas = qrContainer.querySelector("canvas");
+  if (existingCanvas) {
+    existingCanvas.remove();
   }
 
+  // Buat QR Code baru
+  const canvas = document.createElement("canvas");
+  const qr = new QRious({
+    element: canvas,
+    value: value,
+    size: 250,
+  });
+
+  qrContainer.insertBefore(canvas, qrContainer.querySelector(".button-group"));
+
+  // Tampilkan tombol download
   const downloadBtn = document.getElementById("downloadBtn");
   if (downloadBtn) {
-      downloadBtn.style.display = "inline-block";
-      downloadBtn.href = qrCanvas.toDataURL("image/png");
-      downloadBtn.download = `${name}.png`;
+    downloadBtn.style.display = "inline-block";
+    downloadBtn.href = canvas.toDataURL("image/png");
+    downloadBtn.download = `${name}.png`;
   }
 
-  // Sembunyikan form input dan tampilkan QR code
+  // Sembunyikan form input dan tampilkan hasil QR Code
   document.querySelector(".left-content").style.display = "none";
   qrContainer.style.display = "block";
 }
-
-
 
 // Fungsi untuk membuat QR Code
 function createQRCode(container, value) {
@@ -73,7 +92,6 @@ function resetForm() {
   document.getElementById("urlName").value = "";
   document.getElementById("sessionToggle").checked = false;
 }
-
 
 // Script untuk mengubah header saat di-scroll
 document.addEventListener("scroll", function () {

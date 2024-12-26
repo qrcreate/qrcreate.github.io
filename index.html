@@ -27,53 +27,89 @@
     <div class="container">
       <!-- Form Input -->
       <div class="left-content">
-          <h1>Buat Kode QR</h1>
-          <div class="tab-buttons">
-              <button class="tab-btn active" onclick="openTab('url')">URL</button>
-              <button class="tab-btn" onclick="openTab('document')">Dokumen</button>
-              <button class="tab-btn" onclick="openTab('signature')">Tanda Tangan</button>
-          </div>
-  
-          <div id="url" class="tab-content active">
-              <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
-              <input type="text" id="urlName" placeholder="Masukkan Nama QR Code Anda" />
-  
-              <!-- Toggle for Session or Permanent QR -->
-              <label>
-                  <input type="checkbox" id="sessionToggle" />
-                  Buat sebagai QR Session (Valid untuk beberapa menit)
-              </label>
-  
-              <button onclick="generateQRCode('url')">Buat QR Code</button>
-          </div>
-      </div>
-  
-      <!-- QR Code Output -->
-      <div id="qrcode" style="display: none;">
-        <!-- QR code akan ditampilkan di sini -->
-        <a id="downloadBtn" style="display: none;">
-            <button>Download QR Code</button>
-        </a>
-        <button onclick="resetForm()">Buat QR Code Baru</button>
-    </div>    
-  </div>
-
-      <footer class="footer">
-        <div class="footer-menu">
-          <a href="index.html" class="menu-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-          </a>
-          <a href="history.html" class="menu-item">
-            <i class="fas fa-clipboard-list"></i>
-            <span>History</span>
-          </a>
-          <a href="profile.html" class="menu-item">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
-          </a>
+        <h1>Buat Kode QR</h1>
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="openTab('url')">URL</button>
+          <button class="tab-btn" onclick="openTab('document')">Dokumen</button>
+          <button class="tab-btn" onclick="openTab('signature')">
+            Tanda Tangan
+          </button>
         </div>
-      </footer>
+
+        <!-- Tab Content -->
+        <div id="url" class="tab-content active">
+          <input type="url" id="urlInput" placeholder="Masukkan URL Anda" />
+          <input
+            type="text"
+            id="urlName"
+            placeholder="Masukkan Nama QR Code Anda"
+          />
+          <label>
+            <input type="checkbox" id="sessionToggle" />
+            Buat sebagai QR Session (Valid untuk beberapa menit)
+          </label>
+          <button onclick="generateQRCode('url')">Buat QR Code</button>
+        </div>
+
+        <div id="document" class="tab-content">
+          <input
+            type="file"
+            id="documentInput"
+            placeholder="Unggah Dokumen Anda"
+          />
+          <input
+            type="text"
+            id="documentName"
+            placeholder="Masukkan Nama QR Code Anda"
+          />
+          <button onclick="generateQRCode('document')">Buat QR Code</button>
+        </div>
+
+        <div id="signature" class="tab-content">
+          <textarea
+            id="signatureInput"
+            placeholder="Masukkan Teks untuk Tanda Tangan"
+          ></textarea>
+          <input
+            type="text"
+            id="signatureName"
+            placeholder="Masukkan Nama QR Code Anda"
+          />
+          <button onclick="generateQRCode('signature')">Buat QR Code</button>
+        </div>
+      </div>
+
+      <!-- QR Code Output -->
+      <div id="qrcode" style="display: none">
+        <h3></h3>
+        <!-- Nama QR Code -->
+        <canvas></canvas>
+        <!-- QR Code -->
+        <div class="button-group">
+          <a id="downloadBtn" style="display: none">
+            <button>Download QR Code</button>
+          </a>
+          <button onclick="resetForm()">Buat QR Code Baru</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-menu">
+        <a href="index.html" class="menu-item">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="history.html" class="menu-item">
+          <i class="fas fa-clipboard-list"></i>
+          <span>History</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+    </footer>
 
     <!-- QRious Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>

@@ -117,10 +117,47 @@ button:hover {
   padding-left: 20px;
 }
 
-#qrcode {
+#qrcode h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333; 
   text-align: center;
-  margin-top: 20px;
 }
+
+#qrcode {
+  text-align: center; /* Pusatkan konten */
+}
+
+#qrcode canvas {
+  margin: 20px auto; /* Jarak antara QR Code dan tombol */
+  display: block;
+}
+
+#qrcode .button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Jarak dari QR Code */
+}
+
+#qrcode .button-group button, #qrcode .button-group a button {
+  margin-top: 10px; /* Jarak antar tombol */
+  width: 80%; /* Tombol memenuhi lebar container */
+  max-width: 250px; /* Batas lebar maksimum tombol */
+  text-align: center;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#qrcode .button-group button:hover, #qrcode .button-group a button:hover {
+  background-color: #5a4cc0;
+}
+
+
 
 #downloadBtn {
   display: none;
