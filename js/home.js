@@ -42,14 +42,17 @@ function generateQRCode(type) {
   }
 
   const downloadBtn = document.getElementById("downloadBtn");
-  downloadBtn.style.display = "inline-block";
-  downloadBtn.href = qrCanvas.toDataURL("image/png");
-  downloadBtn.download = `${name}.png`;
+  if (downloadBtn) {
+      downloadBtn.style.display = "inline-block";
+      downloadBtn.href = qrCanvas.toDataURL("image/png");
+      downloadBtn.download = `${name}.png`;
+  }
 
   // Sembunyikan form input dan tampilkan QR code
   document.querySelector(".left-content").style.display = "none";
   qrContainer.style.display = "block";
 }
+
 
 
 // Fungsi untuk membuat QR Code
