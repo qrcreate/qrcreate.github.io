@@ -301,3 +301,55 @@ label {
 .menu-links.active {
   display: block;
 }
+
+/* Sembunyikan garis tiga di tampilan desktop */
+@media (min-width: 768px) {
+  .menu-icons i {
+    display: none;
+  }
+
+  .menu-links {
+    display: flex !important; /* Pastikan menu-links terlihat */
+    gap: 20px; /* Jarak antar link */
+    position: static; /* Pastikan posisinya inline */
+    background-color: transparent; /* Hilangkan warna background */
+    box-shadow: none; /* Hilangkan shadow */
+    padding: 0; /* Hilangkan padding */
+  }
+
+  .menu-links a {
+    color: white; /* Warna link */
+    font-size: 16px; /* Ukuran font */
+    text-decoration: none; /* Hilangkan underline */
+  }
+
+  .menu-links a:hover {
+    text-decoration: underline; /* Teks bergaris saat hover */
+    color: #00bcd4;
+  }
+}
+
+/* Tampilkan garis tiga di tampilan mobile */
+@media (max-width: 767px) {
+  .menu-icons i {
+    display: block;
+  }
+
+  .menu-links {
+    display: none; /* Default tersembunyi di mobile */
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-links a {
+    display: block;
+    padding: 5px 10px;
+    color: black; /* Warna link di mobile */
+  }
+}
+
