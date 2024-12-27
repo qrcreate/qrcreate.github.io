@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #6c5ce7;
+    --secondary-color: #ffffff;
+    --danger-color: #e74c3c;
+    --background-color: #6c5ce7; /* Tambahkan warna latar belakang */
+    --text-color: #333;
+    --border-radius: 5px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background:  url('https://static.vecteezy.com/system/resources/thumbnails/042/729/327/small/abstract-luxury-gradient-blue-background-free-photo.jpg') no-repeat center center;
+    background-size: cover;
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparansi untuk menonjolkan latar belakang */
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.header h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.profile-picture input {
+    display: none;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cancel-btn, .save-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn {
+    background-color: var(--danger-color);
+    color: var(--secondary-color);
+}
+
+.save-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+.save-btn:hover {
+    background-color: #5b4acb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .form-group input {
+        font-size: 12px;
+    }
+
+    .cancel-btn, .save-btn {
+        font-size: 12px;
+    }
+}
