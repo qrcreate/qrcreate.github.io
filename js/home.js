@@ -30,8 +30,6 @@ function generateQRCode(type) {
         }
         const allowedTypes = [
             "application/pdf",
-            "image/jpeg",
-            "image/png",
             "application/msword", // DOC
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // DOCX
             "application/vnd.ms-powerpoint", // PPT
