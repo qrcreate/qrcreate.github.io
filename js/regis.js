@@ -25,7 +25,7 @@ function register() {
     };
 
     // URL endpoint backend
-    const target_url =
+    const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user";
        
 
     // Tampilkan spinner loading (opsional)
@@ -56,15 +56,15 @@ function register() {
 }
 
 // Callback Google SSO
-function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
+// function handleCredentialResponse(response) {
+//     console.log("Encoded JWT ID token: " + response.credential);
 
-    // Data yang akan dikirim ke backend
-    const data = {
-        token: response.credential
-    };
+//     // Data yang akan dikirim ke backend
+//     const data = {
+//         token: response.credential
+//     };
 
-    const target_url =
+//     const target_url =
        
 
     // Kirim token ke backend
