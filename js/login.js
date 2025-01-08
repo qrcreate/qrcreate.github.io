@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = { email, password };
 
         // URL endpoint backend untuk login
-        const target_url =
-            "https://asia-southeast2-civil-epigram-429004-t8.cloudfunctions.net/webhook/login";
+        const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user";
+            
 
         // Tampilkan spinner loading (opsional)
         const spinner = document.getElementById("loading-spinner");
@@ -59,15 +59,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Callback Google SSO
-function handleCredentialResponse(response) {
-    console.log("Encoded JWT ID token: " + response.credential);
+// function handleCredentialResponse(response) {
+//     console.log("Encoded JWT ID token: " + response.credential);
 
-    // Data yang akan dikirim ke backend
-    const data = { token: response.credential };
+//     // Data yang akan dikirim ke backend
+//     const data = { token: response.credential };
 
-    // URL endpoint backend untuk Google Login
-    const target_url =
-        "https://asia-southeast2-civil-epigram-429004-t8.cloudfunctions.net/webhook/google-login";
+//     // URL endpoint backend untuk Google Login
+//     const target_url =
+//         "https://asia-southeast2-civil-epigram-429004-t8.cloudfunctions.net/webhook/google-login";
 
     // Kirim token ke backend
     postJSON(
