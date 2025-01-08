@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     color: #333333;
     background-color: #f5f5f5;
-    background:  url('https://static.vecteezy.com/system/resources/thumbnails/042/729/327/small/abstract-luxury-gradient-blue-background-free-photo.jpg') no-repeat  ;
+    background:  url('') no-repeat  ;
     background-size: cover; /* Memastikan gambar memenuhi seluruh body */
     background-attachment: fixed; /* Membuat background tetap saat scrolling */
 }
