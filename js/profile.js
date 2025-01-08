@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileImgInput = document.getElementById("profile-img");
     const profilePreview = document.getElementById("profilePreview");
 
+    // URL endpoint backend untuk profile
+    const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user";
+
     profileImgInput.addEventListener("change", (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -22,9 +25,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    document.querySelector(".profile-form").addEventListener("submit", (event) => {
+    document.querySelector(".profile-form").addEventListener("submit", async (event) => {
         event.preventDefault();
-        alert("Profile updated successfully!");
+
+        const formData = new FormData(event.target);
+        const profileData = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            profileImg: profilePreview.src
+        };
+
+        try {
+            const response = await fetch(target_url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(profileData)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            alert("Profile updated successfully!");
+            console.log("Server Response:", result);
+        } catch (error) {
+            console.error("Failed to update profile:", error);
+            alert("Failed to update profile. Please try again later.");
+        }
     });
 });
-
