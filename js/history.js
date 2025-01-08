@@ -4,10 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const qrHistory = [
         {
             name: "Example QR",
-            url: "https://example.com",
             date: "2024-12-27",
             time: "14:35:00",
-            qrImage: "https://via.placeholder.com/100"
         },
         // Add more entries as needed
     ];
