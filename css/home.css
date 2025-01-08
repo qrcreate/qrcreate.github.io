@@ -352,4 +352,13 @@ label {
     color: black; /* Warna link di mobile */
   }
 }
+.menu-links a#logoutBtn {
+  color: red; /* Warna tombol logout */
+  font-weight: bold; /* Huruf tebal */
+  transition: color 0.3s;
+}
+
+.menu-links a#logoutBtn:hover {
+  color: darkred; /* Warna saat hover */
+}
 

@@ -229,4 +229,25 @@ function setCookieWithExpireDay(cname, cvalue, exdays) {
       }
     });
   });
+  document.addEventListener("DOMContentLoaded", function () {
+    const logoutBtn = document.getElementById("logoutBtn");
+  
+    // Tambahkan event listener untuk tombol logout
+    logoutBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+  
+      // Hapus semua cookie
+      const cookies = document.cookie.split("; ");
+      cookies.forEach((cookie) => {
+        const cookieName = decodeURIComponent(cookie.split("=")[0]);
+        deleteCookie(cookieName);
+      });
+  
+      // Tampilkan pesan logout
+      alert("Anda telah logout. Mengarahkan ke halaman login...");
+  
+      // Arahkan pengguna ke halaman login
+      window.location.href = "index.html";
+    });
+  });
   
