@@ -1,5 +1,3 @@
-// history.js
-
 document.addEventListener("DOMContentLoaded", () => {
     const historyBody = document.getElementById("historyBody");
 
@@ -13,6 +11,32 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         // Add more entries as needed
     ];
+
+    // URL endpoint backend untuk login
+    const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user/detail";
+
+    async function fetchQRData(data) {
+        try {
+            const response = await fetch(target_url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            return result;
+        } catch (error) {
+            console.error("Failed to fetch QR data:", error);
+            alert("Failed to create QR Code. Please try again later.");
+            return null;
+        }
+    }
 
     function renderHistory() {
         historyBody.innerHTML = "";
@@ -49,6 +73,37 @@ document.addEventListener("DOMContentLoaded", () => {
             link.href = `data:text/plain,QR Code: ${qr.name}, URL: ${qr.url}, Date: ${qr.date}, Time: ${qr.time}`;
             link.download = `${qr.name}.txt`;
             link.click();
+        }
+    });
+
+    document.getElementById("createQRButton").addEventListener("click", async () => {
+        const nameInput = document.getElementById("qrName").value;
+        const urlInput = document.getElementById("qrUrl").value;
+
+        if (!nameInput || !urlInput) {
+            alert("Please enter both name and URL.");
+            return;
+        }
+
+        const requestData = {
+            name: nameInput,
+            url: urlInput
+        };
+
+        const qrData = await fetchQRData(requestData);
+
+        if (qrData) {
+            const currentDate = new Date();
+            const newEntry = {
+                name: qrData.name || nameInput,
+                url: qrData.url || urlInput,
+                date: currentDate.toISOString().split("T")[0],
+                time: currentDate.toTimeString().split(" ")[0],
+                qrImage: qrData.qrImage || "https://via.placeholder.com/100"
+            };
+
+            qrHistory.push(newEntry);
+            renderHistory();
         }
     });
 
