@@ -70,18 +70,18 @@ document.addEventListener("DOMContentLoaded", function () {
 //         "https://asia-southeast2-civil-epigram-429004-t8.cloudfunctions.net/webhook/google-login";
 
     // Kirim token ke backend
-    postJSON(
-        target_url,
-        "Content-Type",
-        "application/json",
-        data,
-        function (response) {
-            if (response.status >= 200 && response.status < 300) {
-                alert("Google Login successful!");
-                console.log("Google User Data:", response.data);
-            } else {
-                alert("Google Login failed: " + (response.data.message || "Unknown error"));
-            }
-        }
-    );
-}
+//     postJSON(
+//         target_url,
+//         "Content-Type",
+//         "application/json",
+//         data,
+//         function (response) {
+//             if (response.status >= 200 && response.status < 300) {
+//                 alert("Google Login successful!");
+//                 console.log("Google User Data:", response.data);
+//             } else {
+//                 alert("Google Login failed: " + (response.data.message || "Unknown error"));
+//             }
+//         }
+//     );
+// }

@@ -68,17 +68,17 @@ function register() {
        
 
     // Kirim token ke backend
-    postJSON(
-        target_url,
-        "Content-Type",
-        "application/json",
-        data,
-        function (response) {
-            if (response.status >= 200 && response.status < 300) {
-                alert("Google Registration successful!");
-            } else {
-                alert("Google Registration failed: " + response.data.message);
-            }
-        }
-    );
-}
+//     postJSON(
+//         target_url,
+//         "Content-Type",
+//         "application/json",
+//         data,
+//         function (response) {
+//             if (response.status >= 200 && response.status < 300) {
+//                 alert("Google Registration successful!");
+//             } else {
+//                 alert("Google Registration failed: " + response.data.message);
+//             }
+//         }
+//     );
+// }
