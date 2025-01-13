@@ -1,0 +1,72 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>Input QR Code</title>  
+    <link rel="stylesheet" href="css/input.css" />  
+    <link  
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"  
+      rel="stylesheet"  
+    />  
+</head>  
+<body>  
+    <!-- Header -->  
+    <header class="header" id="header">  
+        <div class="logo">  
+            <img src="images/logo.png" alt="Logo" class="logo-img" />  
+        </div>  
+        <div class="menu-icons">  
+            <i class="fas fa-bars" id="menuToggle"></i>  
+            <div class="menu-links" id="menuLinks">  
+                <a href="login.html">Login</a>  
+                <a href="register.html">Register</a>  
+                <a href="index.html" id="logoutBtn">Logout</a>  
+            </div>  
+        </div>  
+    </header>  
+  
+    <!-- Input Container -->  
+    <div class="container">  
+        <h2>Input Data QR Code</h2>  
+        <div id="inputSection"></div>  
+        <div id="qrcode" style="display: none">  
+            <h3></h3>  
+            <canvas></canvas>  
+            <div class="button-group">  
+                <a id="downloadBtn" style="display: none">  
+                    <button>Download QR Code</button>  
+                </a>  
+                <button onclick="resetForm()">Buat QR Code Baru</button>  
+            </div>  
+        </div>  
+    </div>  
+  
+    <!-- Footer -->  
+    <footer class="footer">  
+        <div class="footer-menu">  
+            <a href="index.html" class="menu-item">  
+                <i class="fas fa-home"></i>  
+                <span>Home</span>  
+            </a>  
+            <a href="history.html" class="menu-item">  
+                <i class="fas fa-clipboard-list"></i>  
+                <span>History</span>  
+            </a>  
+            <a href="profile.html" class="menu-item">  
+                <i class="fas fa-user"></i>  
+                <span>Profile</span>  
+            </a>  
+            <a href="index.html" class="menu-item" id="logoutFooter">  
+                <i class="fas fa-sign-out-alt"></i>  
+                <span>Logout</span>  
+            </a>  
+        </div>  
+    </footer>  
+  
+    <!-- Library QRious untuk Generate QR Code -->  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>  
+    <!-- File JavaScript untuk Logika Halaman -->  
+    <script src="js/input.js" defer></script>  
+</body>  
+</html>  

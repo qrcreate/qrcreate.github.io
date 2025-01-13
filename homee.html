@@ -1,0 +1,127 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>QR Code Generator</title>  
+    <link rel="stylesheet" href="css/homee.css" />  
+    <link  
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"  
+      rel="stylesheet"  
+    />  
+</head>  
+<body>  
+    <!-- Header -->  
+    <header class="header" id="header">  
+        <!-- Logo -->  
+        <div class="logo">  
+            <img src="images/logo.png" alt="Logo" class="logo-img" />  
+        </div>  
+  
+        <!-- Menu (Login & Register) -->  
+        <div class="menu-icons">  
+            <i class="fas fa-bars" id="menuToggle"></i>  
+            <div class="menu-links" id="menuLinks">  
+                <a href="login.html">Login</a>  
+                <a href="register.html">Register</a>  
+                <a href="index.html" id="logoutBtn">Logout</a>  
+            </div>  
+        </div>  
+    </header>  
+  
+    <!-- Container Utama -->  
+    <div class="container">  
+        <div class="menu-container">  
+            <h2>Pilih Tipe QR Code</h2>  
+            <div class="card-container">  
+                <div class="card" id="documentCard">  
+                    <span class="icon">📧</span>  
+                    <h3>Dokumen</h3>  
+                </div>  
+                <div class="card" id="signatureCard">  
+                    <span class="icon">📝</span>  
+                    <h3>Tanda Tangan</h3>  
+                </div>  
+                <div class="card" id="urlCard">  
+                    <span class="icon">🔗</span>  
+                    <h3>URL</h3>  
+                </div>  
+            </div>  
+        </div>  
+  
+        <!-- Overlay untuk Input -->  
+        <div id="overlay" class="overlay" style="display: none;"></div>  
+  
+        <!-- Input Container -->  
+        <div id="inputContainer" class="input-container" style="display: none;">  
+            <div id="urlInput" class="input-section" style="display: none;">  
+                <label for="url">URL</label>  
+                <input type="url" id="url" placeholder="Masukkan URL" required />  
+                <label for="urlName">Nama QR Code</label>  
+                <input type="text" id="urlName" placeholder="Masukkan Nama" required />  
+                <button onclick="generateQRCode('url')">Buat QR Code</button>  
+                <button onclick="closeInput()">Tutup</button>  
+            </div>  
+  
+            <div id="documentInput" class="input-section" style="display: none;">  
+                <label for="document">Dokumen</label>  
+                <input type="file" id="document" accept=".pdf,.doc,.docx" required />  
+                <label for="documentName">Nama QR Code</label>  
+                <input type="text" id="documentName" placeholder="Masukkan Nama" required />  
+                <button onclick="generateQRCode('document')">Buat QR Code</button>  
+                <button onclick="closeInput()">Tutup</button>  
+            </div>  
+  
+            <div id="signatureInput" class="input-section" style="display: none;">  
+                <label for="signatureText">Tanda Tangan (Teks)</label>  
+                <input type="text" id="signatureText" placeholder="Masukkan Tanda Tangan" required />  
+                <label for="signatureImage">Gambar Tanda Tangan</label>  
+                <input type="file" id="signatureImage" accept="image/*" required />  
+                <label for="signatureName">Nama QR Code</label>  
+                <input type="text" id="signatureName" placeholder="Masukkan Nama" required />  
+                <button onclick="generateQRCode('signature')">Buat QR Code</button>  
+                <button onclick="closeInput()">Tutup</button>  
+            </div>  
+        </div>  
+  
+        <!-- Output QR Code -->  
+        <div id="qrcode" style="display: none">  
+            <h3></h3>  
+            <canvas></canvas>  
+            <div class="button-group">  
+                <a id="downloadBtn" style="display: none">  
+                    <button>Download QR Code</button>  
+                </a>  
+                <button onclick="resetForm()">Buat QR Code Baru</button>  
+            </div>  
+        </div>  
+    </div>  
+  
+    <!-- Footer -->  
+    <footer class="footer">  
+        <div class="footer-menu">  
+            <a href="index.html" class="menu-item">  
+                <i class="fas fa-home"></i>  
+                <span>Home</span>  
+            </a>  
+            <a href="history.html" class="menu-item">  
+                <i class="fas fa-clipboard-list"></i>  
+                <span>History</span>  
+            </a>  
+            <a href="profile.html" class="menu-item">  
+                <i class="fas fa-user"></i>  
+                <span>Profile</span>  
+            </a>  
+            <a href="index.html" class="menu-item" id="logoutFooter">  
+                <i class="fas fa-sign-out-alt"></i>  
+                <span>Logout</span>  
+            </a>  
+        </div>  
+    </footer>  
+  
+    <!-- Library QRious untuk Generate QR Code -->  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>  
+    <!-- File JavaScript untuk Logika Halaman -->  
+    <script src="js/homee.js" defer></script>  
+</body>  
+</html>  
