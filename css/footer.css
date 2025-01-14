@@ -19,7 +19,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #0099CC;
     border-top: 1px solid #ddd;
     display: none; /* Hide by default */
     justify-content: space-around;
