@@ -50,11 +50,10 @@ function register() {
                 Swal.fire({
                     icon: "success",
                     title: "Registration Successful",
-                    text: "Welcome! Your account has been created.",
+                    text: "Welcome! Redirecting to your dashboard...",
                 }).then(() => {
-                    document.getElementById("nameInput").value = "";
-                    document.getElementById("emailInput").value = "";
-                    document.getElementById("passwordInput").value = "";
+                    // Redirect ke home.html
+                    window.location.href = "../home.html";
                 });
             } else {
                 Swal.fire({
