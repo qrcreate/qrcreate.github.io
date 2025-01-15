@@ -208,7 +208,7 @@ function setCookieWithExpireDay(cname, cvalue, exdays) {
         alert("Session QR tidak akan disimpan.");
       }
     });
-  });
+
   document.addEventListener("DOMContentLoaded", function () {
     const logoutBtn = document.getElementById("logoutBtn");
   
