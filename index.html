@@ -75,6 +75,38 @@
             <!-- End Intro Section -->
            
         <!-- End Content -->
+         <!-- FAQ Section -->  
+<section id="faq" class="faq-section">  
+    <h2 class="faq-title">Frequently Asked Questions</h2>  
+    <div class="faq-item">  
+        <div class="faq-question" onclick="toggleAnswer(this)">  
+            <h3>How to Generate QR Codes for Commercial Usage?</h3>  
+            <span class="arrow">▼</span>  
+        </div>  
+        <div class="faq-answer">  
+            <p>To generate QR codes for commercial usage, you can use various online QR code generators that allow customization and tracking. Ensure to choose a generator that supports high-resolution outputs suitable for print.</p>  
+        </div>  
+    </div>  
+    <div class="faq-item">  
+        <div class="faq-question" onclick="toggleAnswer(this)">  
+            <h3>What are the QR Code File Types in QR Code Creator?</h3>  
+            <span class="arrow">▼</span>  
+        </div>  
+        <div class="faq-answer">  
+            <p>The QR Code Creator typically supports file types such as PNG, JPG, EPS, and SVG. Each format has its own advantages depending on your needs for quality and scalability.</p>  
+        </div>  
+    </div>  
+    <!-- Add more FAQ items as needed -->  
+</section>  
+<script>  
+    function toggleAnswer(element) {  
+        const answer = element.nextElementSibling;  
+        const isActive = element.classList.toggle('active');  
+        answer.style.display = isActive ? 'block' : 'none';  
+    }  
+</script>  
+
+
 
         <!-- Site Footer -->
         <footer id="footer" class="s-footer target-section">

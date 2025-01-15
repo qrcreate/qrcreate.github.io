@@ -4682,3 +4682,43 @@ img.u-pull-left {
     background-position: 0% 50%; /* Kembali ke posisi awal */
   }
 }
+.faq-section {  
+    background-color: white;  
+    padding: 20px;  
+    color: var(--text-color);  
+}  
+  
+.faq-title {  
+    text-align: center;  
+    margin-bottom: 20px;  
+    font-size: 24px;  
+}  
+  
+.faq-item {  
+    margin-bottom: 10px;  
+    border: 1px solid whitesmoke;  
+    border-radius: 5px;  
+}  
+  
+.faq-question {  
+    padding: 15px;  
+    cursor: pointer;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    background-color: whitesmoke;  
+}  
+  
+.faq-answer {  
+    display: none; /* Hidden by default */  
+    padding: 15px;  
+    background-color: whitesmoke;  
+}  
+  
+.arrow {  
+    transition: transform 0.3s;  
+}  
+  
+.faq-question.active .arrow {  
+    transform: rotate(180deg); /* Rotate arrow when active */  
+}  
