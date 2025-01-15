@@ -194,27 +194,7 @@ function setCookieWithExpireDay(cname, cvalue, exdays) {
       header.classList.remove("scrolled");
     }
   });
-  
-  // Script untuk toggle menu
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuIcon = document.querySelector(".menu-icons i");
-    const menuLinks = document.querySelector(".menu-links");
-  
-    menuIcon.addEventListener("click", function () {
-      if (window.innerWidth <= 767) {
-        menuLinks.style.display = menuLinks.style.display === "block" ? "none" : "block";
-      }
-    });
-  
-    document.addEventListener("click", function (event) {
-      if (
-        !menuIcon.contains(event.target) &&
-        !menuLinks.contains(event.target) &&
-        window.innerWidth <= 767
-      ) {
-        menuLinks.style.display = "none";
-      }
-    });
+
   
     // Panggil fungsi ini untuk memuat QR Code dari cookie jika ada
     loadQRCodeFromCookie();
