@@ -9,8 +9,8 @@ function register() {
     if (!name || !email || !password) {
         Swal.fire({
             icon: "error",
-            title: "Error",
-            text: "Please fill out all fields.",
+            title: "Incomplete Form",
+            text: "Please fill out all fields to proceed.",
         });
         return;
     }
@@ -18,8 +18,8 @@ function register() {
     if (!validateEmail(email)) {
         Swal.fire({
             icon: "error",
-            title: "Invalid Email",
-            text: "Please enter a valid email address.",
+            title: "Invalid Email Address",
+            text: "Please enter a valid email format.",
         });
         return;
     }
@@ -28,7 +28,7 @@ function register() {
         Swal.fire({
             icon: "error",
             title: "Weak Password",
-            text: "Password must be at least 6 characters long.",
+            text: "Your password must be at least 6 characters.",
         });
         return;
     }
@@ -38,10 +38,10 @@ function register() {
 
     Swal.fire({
         title: "Registering...",
-        text: "Please wait while we process your registration.",
+        html: "Please wait while we process your registration.",
         allowOutsideClick: false,
         showConfirmButton: false,
-        willOpen: () => {
+        didOpen: () => {
             Swal.showLoading();
         },
     });
@@ -51,43 +51,44 @@ function register() {
         "Content-Type",
         "application/json",
         data,
-        function (response) {
-            Swal.close(); // Tutup loading spinner
+        (response) => {
+            Swal.close();
 
             if (response.status >= 200 && response.status < 300) {
                 Swal.fire({
                     icon: "success",
-                    title: "Registration Successful",
-                    text: "Welcome! Redirecting to your dashboard...",
-                    confirmButtonText: "OK",
-                }).then(() => {
-                    // Redirect ke home.html
-                    window.location.href = "../home.html";
+                    title: "Welcome!",
+                    html: `<b>Registration Successful!</b><br>You will be redirected shortly.`,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    willClose: () => {
+                        window.location.href = "../home.html";
+                    },
                 });
             } else {
                 Swal.fire({
                     icon: "error",
                     title: "Registration Failed",
-                    text: response.data.message || "Something went wrong! Please try again.",
+                    text: response.data.message || "Unexpected error occurred. Please try again.",
                 });
             }
         },
-        function (error) {
-            Swal.close(); // Tutup loading spinner
+        (error) => {
+            Swal.close();
             Swal.fire({
                 icon: "error",
-                title: "Error",
-                text: "Failed to connect to the server. Please try again later.",
+                title: "Network Error",
+                text: "Failed to connect to the server. Please check your connection and try again.",
             });
         }
     );
 }
 
-// Fungsi validasi email
+// Email Validation
 function validateEmail(email) {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return re.test(String(email).toLowerCase());
+    return re.test(email);
 }
 
-// Hubungkan fungsi ke tombol Register
+// Connect to Register Button
 document.getElementById("registerButton").addEventListener("click", register);
