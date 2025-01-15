@@ -36,7 +36,15 @@ function register() {
     const data = { username: name, email, password };
     const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user";
 
-    Swal.showLoading(); // Tampilkan loading spinner
+    Swal.fire({
+        title: "Registering...",
+        text: "Please wait while we process your registration.",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+            Swal.showLoading();
+        },
+    });
 
     postJSON(
         target_url,
@@ -51,6 +59,7 @@ function register() {
                     icon: "success",
                     title: "Registration Successful",
                     text: "Welcome! Redirecting to your dashboard...",
+                    confirmButtonText: "OK",
                 }).then(() => {
                     // Redirect ke home.html
                     window.location.href = "../home.html";
@@ -59,9 +68,17 @@ function register() {
                 Swal.fire({
                     icon: "error",
                     title: "Registration Failed",
-                    text: response.data.message || "Something went wrong!",
+                    text: response.data.message || "Something went wrong! Please try again.",
                 });
             }
+        },
+        function (error) {
+            Swal.close(); // Tutup loading spinner
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Failed to connect to the server. Please try again later.",
+            });
         }
     );
 }
