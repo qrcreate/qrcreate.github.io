@@ -1,9 +1,0 @@
-/* Add this CSS code to your stylesheet */
-
-.s-testimonials__avatar {
-    transition: transform 0.3s ease;
-}
-
-.s-testimonials__slide:hover .s-testimonials__avatar {
-    transform: scale(1.1);
-}
