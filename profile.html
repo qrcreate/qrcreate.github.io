@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
-    <link rel="stylesheet" href="css/profile.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="css/profile.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    
-    <div class="container">
-        <div class="header">
-            <h1>Edit Profile</h1>
-        </div>
-        <form class="profile-form">
-            <div class="profile-picture">
-                <label for="profile-img">
-                    <img src="default-avatar.png" alt="Profile Picture" id="profilePreview">
-                </label>
-                <input type="file" id="profile-img" accept="image/*">
-            </div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter new password">
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" placeholder="Enter your phone number" required>
-            </div>
-            <div class="form-actions">
-                <button type="button" class="cancel-btn">Cancel</button>
-                <button type="submit" class="save-btn">Save Changes</button>
-            </div>
-        </form>
+  <!-- Profile Header -->
+  <header class="profile-header">
+    <h1>Profile</h1>
+  </header>
+
+  <!-- Profile Details -->
+  <main class="profile-details">
+    <div class="info-card">
+      <div class="info-item">
+        <i class="fas fa-user"></i>
+        <p>@username</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <p>youremail@domain.com</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <p>+01 234 567 89</p>
+      </div>
+      <button class="edit-profile-btn" onclick="window.location.href='edit-profile.html'">Edit Profile</button>
     </div>
-    <footer class="footer">
-        <div class="footer-menu">
-          <a href="index.html" class="menu-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-          </a>
-          <a href="history.html" class="menu-item">
-            <i class="fas fa-clipboard-list"></i>
-            <span>History</span>
-          </a>
-          <a href="profile.html" class="menu-item">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
-          </a>
-          <a href="homee.html" class="menu-item" id="logoutFooter">  
-            <i class="fas fa-sign-out-alt"></i>  
-            <span>Logout</span>  
-        </a>  
-        </div>
-    </footer>
-    <!-- QRious Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <script src="js/profile.js"></script>
+  </main>
+
+  <!-- Footer Navigation -->
+  <footer class="footer">
+    <a href="logout.html" class="menu-item">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+    <a href="index.html" class="menu-item">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="history.html" class="menu-item">
+      <i class="fas fa-clipboard-list"></i>
+      <span>History</span>
+    </a>
+    <a href="profile.html" class="menu-item active">
+      <i class="fas fa-user"></i>
+      <span>Profile</span>
+    </a>
+  </footer>
 </body>
 </html>
