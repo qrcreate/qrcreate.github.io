@@ -1,56 +1,77 @@
-import { postJSON } from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js'; // Sesuaikan path ke file Anda
+import { postJSON } from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js'; 
+import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js";
 
-// Fungsi Register Manual
 function register() {
-    const name = document.getElementById("nameInput").value;
-    const email = document.getElementById("emailInput").value;
-    const password = document.getElementById("passwordInput").value;
-    const confirmPassword = document.getElementById("confirmPasswordInput").value;
+    const name = document.getElementById("nameInput").value.trim();
+    const email = document.getElementById("emailInput").value.trim();
+    const password = document.getElementById("passwordInput").value.trim();
 
-    if (!name || !email || !password || !confirmPassword) {
-        alert("Please fill out all fields.");
+    if (!name || !email || !password) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Please fill out all fields.",
+        });
         return;
     }
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match. Please try again.");
+    if (!validateEmail(email)) {
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Email",
+            text: "Please enter a valid email address.",
+        });
         return;
     }
 
-    // Data yang akan dikirim ke backend
-    const data = {
-        name: name,
-        email: email,
-        password: password
-    };
+    if (password.length < 6) {
+        Swal.fire({
+            icon: "error",
+            title: "Weak Password",
+            text: "Password must be at least 6 characters long.",
+        });
+        return;
+    }
 
-    // URL endpoint backend
+    const data = { username: name, email, password };
     const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user";
-       
 
-    // Tampilkan spinner loading (opsional)
-    document.getElementById("loading-spinner").style.display = "block";
+    Swal.showLoading(); // Tampilkan loading spinner
 
-    // Kirim data ke backend menggunakan postJSON
     postJSON(
         target_url,
         "Content-Type",
         "application/json",
         data,
         function (response) {
-            // Sembunyikan spinner loading
-            document.getElementById("loading-spinner").style.display = "none";
+            Swal.close(); // Tutup loading spinner
 
             if (response.status >= 200 && response.status < 300) {
-                alert("Registration successful! Token: " + response.data.token);
-                // Reset form setelah berhasil
-                document.getElementById("nameInput").value = "";
-                document.getElementById("emailInput").value = "";
-                document.getElementById("passwordInput").value = "";
-                document.getElementById("confirmPasswordInput").value = "";
+                Swal.fire({
+                    icon: "success",
+                    title: "Registration Successful",
+                    text: "Welcome! Your account has been created.",
+                }).then(() => {
+                    document.getElementById("nameInput").value = "";
+                    document.getElementById("emailInput").value = "";
+                    document.getElementById("passwordInput").value = "";
+                });
             } else {
-                alert("Error: " + response.data.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Registration Failed",
+                    text: response.data.message || "Something went wrong!",
+                });
             }
         }
     );
 }
+
+// Fungsi validasi email
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+}
+
+// Hubungkan fungsi ke tombol Register
+document.getElementById("registerButton").addEventListener("click", register);
