@@ -1,0 +1,552 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --text-color: #FFFFFF;
+  --icon-color: #ACACBE;
+  --icon-hover-bg: #5b5e71;
+  --placeholder-color: #dcdcdc;
+  --outgoing-chat-bg: #212121;
+  --incoming-chat-bg: #212121;
+  --outgoing-chat-border: #212121;
+  --incoming-chat-border: #212121;
+  --background-color: #212121;
+  --button-bg: #2F2F2F;
+  --button-hover-bg: #737a7d;
+  --default-text-color: #888;
+  --chat-radius: 20px;
+  --input-bg: #2F2F2F;
+}
+
+.light-mode {
+  --text-color: #343541;
+  --icon-color: #a9a9bc;
+  --icon-hover-bg: #f1f1f3;
+  --placeholder-color: #1b1919;
+  --outgoing-chat-bg: #f4f4f9;
+  --incoming-chat-bg: #f4f4f9;
+  --outgoing-chat-border: #f4f4f9;
+  --incoming-chat-border: #f4f4f9;
+  --background-color: #f4f4f9;
+  --button-bg: #bebece;
+  --button-hover-bg: #5d666e;
+  --default-text-color: #666;
+  --input-bg: #bebece;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Sidebar styling */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #111;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar .sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.sidebar .sidebar-btn {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.sidebar .sidebar-btn:hover {
+  background-color: #555;
+}
+
+.sidebar .back-btn {
+  position: absolute;
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.sidebar .back-btn:hover {
+  background-color: #bc5353;
+}
+
+.sidebar .logout-btn {
+  position: absolute;
+  bottom: 120px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.sidebar .logout-btn:hover {
+  background-color: #bc5353;
+}
+
+.open-btn {
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* User Menu Styles */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 20px;
+  right: 0;
+  overflow: hidden; /* Ensure child elements don't overflow */
+}
+
+.user-menu-content a,
+.user-menu-content button {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border-radius: 0; /* Reset border-radius for individual items */
+}
+
+.user-menu-content a:hover,
+.user-menu-content button:hover {
+  background-color: #575757;
+  border-radius: 20px; /* Apply the border-radius to the hovered item */
+}
+
+.user-menu-content .menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+}
+
+.user-menu-content .menu-item span {
+  margin-right: 10px;
+}
+
+.user-menu:hover .user-menu-content {
+  display: block;
+}
+
+.menu-item {
+  display: flex;
+  align-items: left; /* Vertically center */
+  justify-content: left; /* Horizontally center */
+  padding: 10px;
+  text-align: center;
+}
+
+.profile-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.profileLogo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile-initial {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #28a745;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.divider {
+  height: 1px;
+  background-color: #575757;
+  margin: 8px 0;
+}
+
+
+/* Chats container styling */
+.chat-container {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding-bottom: 150px;
+  padding-top: 20px;
+  scroll-behavior: smooth;
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar-track {
+  background: var(--incoming-chat-bg);
+  border-radius: 25px;
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar-thumb {
+  background: var(--icon-color);
+  border-radius: 25px;
+}
+
+.default-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  padding: 0 10px;
+  text-align: center;
+  color: var(--default-text-color);
+}
+
+.default-text h1 {
+  font-size: 3.3rem;
+}
+
+.default-text p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.chat-container .chat {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  border-radius: var(--chat-radius);
+  margin-bottom: 10px;
+}
+
+.chat-container .chat.outgoing {
+  background: var(--outgoing-chat-bg);
+  border: 1px solid var(--outgoing-chat-border);
+  justify-content: flex-end;
+}
+
+.chat-container .chat.incoming {
+  background: var(--incoming-chat-bg);
+  border: 1px solid var(--incoming-chat-border);
+}
+
+.chat .chat-content {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.chat.outgoing .chat-content {
+  justify-content: flex-end;
+}
+
+span.material-symbols-rounded {
+  user-select: none;
+  cursor: pointer;
+}
+
+.chat .chat-content span {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: var(--icon-color);
+  visibility: hidden;
+}
+
+.chat:hover .chat-content:not(:has(.typing-animation), :has(.error)) span {
+  visibility: visible;
+}
+
+.chat .chat-details {
+  display: flex;
+  align-items: center;
+}
+
+.chat.outgoing .chat-details {
+  justify-content: flex-end;
+}
+
+.chat .chat-details img {
+  width: 35px;
+  height: 35px;
+  align-self: flex-start;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.chat .chat-details p {
+  white-space: pre-wrap;
+  font-size: 1.05rem;
+  padding: 0 50px 0 25px;
+  color: var(--text-color);
+  word-break: break-word;
+  background: var(--input-bg);
+  border-radius: var(--chat-radius);
+  padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chat.outgoing .chat-details p {
+  padding: 0 25px 0 50px;
+}
+
+.chat .chat-details p.error {
+  color: #e55865;
+}
+
+.chat .typing-animation {
+  padding-left: 25px;
+  display: inline-flex;
+}
+
+.typing-animation .typing-dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  margin: 0 3px;
+  opacity: 0.7;
+  background: var(--text-color);
+  animation: animateDots 1.5s var(--delay) ease-in-out infinite;
+}
+
+.typing-animation .typing-dot:first-child {
+  margin-left: 0;
+}
+
+@keyframes animateDots {
+  0%, 44% {
+    transform: translateY(0px);
+  }
+  28% {
+    opacity: 0.4;
+    transform: translateY(-6px);
+  }
+  44% {
+    opacity: 0.2;
+  }
+}
+
+/* Typing container styling */
+.typing-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: 20px 10px;
+  justify-content: center;
+  background: var(--background-color);
+  border-top: 1px solid var(--incoming-chat-border);
+}
+
+.typing-container .typing-content {
+  display: flex;
+  max-width: 950px;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.typing-container .typing-textarea {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.typing-textarea textarea {
+  resize: none;
+  height: 55px;
+  width: 100%;
+  border: none;
+  padding: 15px 45px 15px 20px;
+  color: var(--text-color);
+  font-size: 1rem;
+  border-radius: var(--chat-radius);
+  max-height: 250px;
+  overflow-y: auto;
+  background: var(--input-bg);
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s;
+}
+
+.typing-textarea textarea::placeholder {
+  color: var(--placeholder-color);
+}
+
+.typing-content span {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  border-radius: var(--chat-radius);
+  font-size: 1.35rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  background: var(--button-bg);
+  transition: background 0.3s, color 0.3s;
+}
+
+.typing-textarea span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+}
+
+.typing-textarea textarea:valid ~ span {
+  visibility: visible;
+}
+
+.typing-controls {
+  display: flex;
+}
+
+.typing-controls span {
+  margin-left: 7px;
+  font-size: 1.4rem;
+  background: var(--button-bg);
+  transition: background 0.3s, color 0.3s;
+}
+
+.typing-controls span:hover {
+  background: var(--button-hover-bg);
+}
+
+.typing-controls span:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Media Query */
+@media screen and (max-width: 600px) {
+  .default-text h1 {
+    font-size: 2.3rem;
+  }
+
+  :where(.default-text p, textarea, .chat p) {
+    font-size: 0.95rem !important;
+  }
+
+  .chat-container .chat {
+    padding: 20px 10px;
+  }
+
+  .chat-container .chat img {
+    height: 32px;
+    width: 32px;
+  }
+
+  .chat-container .chat p {
+    padding: 0 20px;
+  }
+
+  .chat .chat-content:not(:has(.typing-animation), :has(.error)) span {
+    visibility: visible;
+  }
+
+  .typing-container {
+    padding: 15px 10px;
+  }
+
+  .typing-textarea textarea {
+    height: 45px;
+    padding: 10px 40px 10px 10px;
+  }
+
+  .typing-content span {
+    height: 45px;
+    width: 45px;
+    margin-left: 5px;
+  }
+
+  span.material-symbols-rounded {
+    font-size: 1.25rem !important;
+  }
+}
+
+#typing-effect {
+    font-family: monospace; /* Makes the typing effect more realistic */
+    white-space: pre-wrap; /* Keeps line breaks */
+}
+
+.typing-span {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid orange; /* Cursor effect */
+}

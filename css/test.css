@@ -1,0 +1,20 @@
+ Custom animations and styles
+  @keyframes spinner {
+    to { transform: rotate(360deg); }
+} 
+/* .loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 4px solid transparent;
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: spinner 1s linear infinite;
+    display: inline-block;
+}
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+.fade-in.show {
+    opacity: 1;
+}  */
