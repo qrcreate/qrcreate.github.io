@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <!-- Google SSO Library -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <!-- Link CSS -->
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
             <!-- Manual Login -->
             <input type="email" id="emailInput" placeholder="Enter your email" required>
             <input type="password" id="passwordInput" placeholder="Enter your password" required>
-            <button id ="manualLogin" >Log In</button>
+            <button id="manualLogin">Log In</button>
 
             <!-- OR Separator -->
             <div class="or-separator">OR</div>
@@ -33,11 +33,13 @@
 
         <!-- Right Section: QR Code Graphic -->
         <div class="login-graphic">
-            <img src="image/qr.png" alt="QR Code" />
+            <img src="image/qr.png" alt="QR Code">
         </div>
     </div>
 
-    <!-- Link JavaScript -->
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Login Script -->
     <script type="module" src="js/login.js"></script>
 </body>
 </html>

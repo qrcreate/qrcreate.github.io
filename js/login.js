@@ -1,6 +1,6 @@
 import { postJSON } from 'https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js';
+import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js";
 
-// Fungsi Login Manual
 document.addEventListener("DOMContentLoaded", function () {
     const loginButton = document.getElementById("manualLogin");
 
@@ -10,49 +10,76 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     loginButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Mencegah reload halaman saat form dikirimkan
+        event.preventDefault(); // Prevent page reload
 
-        // Mengambil input email dan password dari pengguna
-        const email = document.getElementById("emailInput")?.value || "";
-        const password = document.getElementById("passwordInput")?.value || "";
+        // Retrieve email and password inputs
+        const email = document.getElementById("emailInput")?.value.trim();
+        const password = document.getElementById("passwordInput")?.value.trim();
 
-        // Validasi apakah email dan password telah diisi
+        // Validation: Ensure fields are filled
         if (!email || !password) {
-            alert("Please fill out both email and password."); // Pesan error jika input kosong
+            Swal.fire({
+                icon: "error",
+                title: "Incomplete Form",
+                text: "Please fill out both email and password.",
+            });
             return;
         }
 
-        // Data yang akan dikirim ke backend
+        // Data to be sent to backend
         const data = { email, password };
 
-        // URL endpoint backend untuk login
-        const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/user";
-            
+        // Backend login URL
+        const target_url = "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qrcreate/qr/login";
 
-        // Tampilkan spinner loading (opsional)
-        const spinner = document.getElementById("loading-spinner");
-        if (spinner) spinner.style.display = "block";
+        // Show loading spinner
+        Swal.fire({
+            title: "Logging in...",
+            html: "Please wait while we authenticate your credentials.",
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        });
 
-        // Kirim data ke backend menggunakan postJSON
+        // Send login data using postJSON
         postJSON(
             target_url,
             "Content-Type",
             "application/json",
             data,
             function (response) {
-                // Sembunyikan spinner loading
-                if (spinner) spinner.style.display = "none";
+                Swal.close(); // Hide loading spinner
 
-                // Cek status response
                 if (response.status >= 200 && response.status < 300) {
-                    alert("Login successful! Token: " + response.data.token);
-                    console.log("User Data:", response.data);
-                    // Reset form setelah berhasil (opsional)
-                    document.getElementById("emailInput").value = "";
-                    document.getElementById("passwordInput").value = "";
+                    Swal.fire({
+                        icon: "success",
+                        title: "Login Successful",
+                        text: "Welcome back! Redirecting to the dashboard...",
+                        timer: 3000,
+                        timerProgressBar: true,
+                        willClose: () => {
+                            // Redirect to dashboard (or desired page)
+                            window.location.href = "../dashboard.html";
+                        },
+                    });
                 } else {
-                    alert("Error: " + (response.data.message || "Login failed"));
+                    Swal.fire({
+                        icon: "error",
+                        title: "Login Failed",
+                        text: response.data.message || "Invalid email or password.",
+                    });
                 }
+            },
+            function (error) {
+                Swal.close(); // Hide loading spinner
+                Swal.fire({
+                    icon: "error",
+                    title: "Network Error",
+                    text: "Failed to connect to the server. Please check your internet connection.",
+                });
+                console.error("Network error:", error); // Debugging log
             }
         );
     });
