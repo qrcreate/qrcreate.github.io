@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         timerProgressBar: true,
                         willClose: () => {
                             // Redirect to dashboard (or desired page)
-                            window.location.href = "../dashboard.html";
+                            window.location.href = "../home.html";
                         },
                     });
                 } else {
