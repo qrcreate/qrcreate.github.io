@@ -54,31 +54,3 @@ function register() {
         }
     );
 }
-
-// Callback Google SSO
-// function handleCredentialResponse(response) {
-//     console.log("Encoded JWT ID token: " + response.credential);
-
-//     // Data yang akan dikirim ke backend
-//     const data = {
-//         token: response.credential
-//     };
-
-//     const target_url =
-       
-
-    // Kirim token ke backend
-//     postJSON(
-//         target_url,
-//         "Content-Type",
-//         "application/json",
-//         data,
-//         function (response) {
-//             if (response.status >= 200 && response.status < 300) {
-//                 alert("Google Registration successful!");
-//             } else {
-//                 alert("Google Registration failed: " + response.data.message);
-//             }
-//         }
-//     );
-// }

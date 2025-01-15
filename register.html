@@ -7,7 +7,7 @@
     <!-- Google SSO Library -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Link CSS -->
-    <link rel="stylesheet" href="css/regis.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
     <!-- Main Register Container -->
@@ -18,26 +18,13 @@
             <p>Fill in the form to register.</p>
 
             <!-- Input Nama, Email, Password -->
-            <input type="text" id="nameInput" placeholder="Enter your name" required>
+            <input type="text" id="nameInput" placeholder="Enter your Username" required>
             <input type="email" id="emailInput" placeholder="Enter your email" required>
             <input type="password" id="passwordInput" placeholder="Enter your password" required>
-            <input type="password" id="confirmPasswordInput" placeholder="Confirm your password" required>
             <button onclick="register()">Register</button>
 
             <!-- OR Separator -->
             <div class="or-separator">OR</div>
-
-            <!-- Google Login -->
-            <!-- <div class="google-login">
-                <div id="g_id_onload"
-                     data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                     data-context="signup"
-                     data-ux_mode="popup"
-                     data-callback="handleCredentialResponse"
-                     data-auto_prompt="false">
-                </div>
-                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="signup_with" data-shape="rectangular"></div>
-            </div> -->
 
             <!-- Sudah Punya Akun Section -->
             <div class="login-link">
@@ -52,6 +39,6 @@
     </div>
 
     <!-- Link JavaScript -->
-    <script type="module" scr="js/regis.js"></script>
+    <script type="module" scr="js/register.js"></script>
 </body>
 </html>

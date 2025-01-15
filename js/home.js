@@ -251,3 +251,35 @@ function setCookieWithExpireDay(cname, cvalue, exdays) {
     });
   });
   
+  document.addEventListener("DOMContentLoaded", function () {
+    const userInfo = document.getElementById("user-info");
+  
+    // Simulasi mendapatkan username dari cookie
+    const username = getCookie("username");
+  
+    if (username) {
+      // Jika user sudah login, tampilkan username
+      userInfo.innerHTML = `<span>Welcome, ${username}</span>`;
+    } else {
+      // Jika belum login, tampilkan tombol login dan register
+      userInfo.innerHTML = `
+        <a href="login.html" class="btn">Login</a>
+        <a href="register.html" class="btn">Register</a>
+      `;
+    }
+  });
+  
+  // Fungsi untuk mendapatkan cookie
+  function getCookie(cname) {
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i].trim();
+      if (c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  

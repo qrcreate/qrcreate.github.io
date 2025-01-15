@@ -231,32 +231,52 @@ label {
 }
 
 /* Header Styling */
-.header {  
-    position: fixed;  
-    top: 0;  
-    left: 0;  
-    width: 100%;  
-    display: flex;  
-    justify-content: space-between;  
-    align-items: center;  
-    padding: 10px 20px;  
-    background: #0056b3; /* Biru Tua */  
-    color: white;   
-    z-index: 1000;  
-}  
- 
 
-/* Logo Container */
-.logo {
+.header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
+/* Logo Container */
 .logo-img {
   width: 40px;
-  height: auto;
 }
+
+.user-info {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.user-info .btn {
+  background-color: white;
+  color: #0056b3;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.user-info .btn:hover {
+  background-color: #00408a;
+  color: white;
+}
+
 /* Menu Icons */
 .menu-icons {
   display: flex;

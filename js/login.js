@@ -57,31 +57,3 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     });
 });
-
-// Callback Google SSO
-// function handleCredentialResponse(response) {
-//     console.log("Encoded JWT ID token: " + response.credential);
-
-//     // Data yang akan dikirim ke backend
-//     const data = { token: response.credential };
-
-//     // URL endpoint backend untuk Google Login
-//     const target_url =
-//         "https://asia-southeast2-civil-epigram-429004-t8.cloudfunctions.net/webhook/google-login";
-
-    // Kirim token ke backend
-//     postJSON(
-//         target_url,
-//         "Content-Type",
-//         "application/json",
-//         data,
-//         function (response) {
-//             if (response.status >= 200 && response.status < 300) {
-//                 alert("Google Login successful!");
-//                 console.log("Google User Data:", response.data);
-//             } else {
-//                 alert("Google Login failed: " + (response.data.message || "Unknown error"));
-//             }
-//         }
-//     );
-// }
