@@ -60,8 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         timer: 3000,
                         timerProgressBar: true,
                         willClose: () => {
-                            // Redirect to dashboard (or desired page)
-                            window.location.href = "../home.html";
+                            redirect("/qr");
                         },
                     });
                 } else {
