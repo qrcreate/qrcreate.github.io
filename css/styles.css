@@ -4652,8 +4652,9 @@ img.u-pull-left {
    text-transform: uppercase;
    background-image: linear-gradient(
       -225deg,
-      #ffffff 0%,   /* Putih */
-      #3498db 50%,  /* Biru medium */
+      #f39c12 0%,   /* Putih */
+      #ffffff 33%,  /* Kuning */
+      #3498db 66%,  /* Biru medium */
       #2980b9 100%  /* Biru tua */
    );
    background-size: 200% auto;
