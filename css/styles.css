@@ -3182,7 +3182,7 @@ img.u-pull-left {
 
 .s-header__menu-toggle span {
     display          : block;
-    background-color : white;
+    background-color : grey;
     width            : 22px;
     height           : 2px;
     margin-top       : -1px;
