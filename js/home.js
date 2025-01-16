@@ -49,6 +49,36 @@ function setupLogoutButton() {
   });
 }
 
+// Fungsi untuk mengubah tab aktif
+function openTab(tabName) {
+  // Menyembunyikan semua tab
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach((tab) => {
+    tab.classList.remove('active');
+  });
+
+  // Menghilangkan kelas 'active' dari semua tombol tab
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach((button) => {
+    button.classList.remove('active');
+  });
+
+  // Menampilkan tab yang sesuai
+  const activeTab = document.getElementById(tabName);
+  if (activeTab) {
+    activeTab.classList.add('active');
+  }
+
+  // Menandai tombol tab yang sesuai sebagai aktif
+  const activeButton = Array.from(buttons).find((button) => {
+    return button.textContent.toLowerCase() === tabName;
+  });
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+}
+
+
 // Fungsi untuk Generate QR Code
 function generateQRCode(type) {
   let value = "";
