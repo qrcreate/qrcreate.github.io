@@ -4,40 +4,40 @@ import { getJSON } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.7/croot.js"
 import { redirect } from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 
 // Fungsi untuk memeriksa login dan mengambil data pengguna
-function checkLoginAndFetchUserData() {
-  const loginToken = getCookie("auth_token");
-  if (!loginToken) {
-    redirect("login.html"); // Arahkan ke login jika tidak ada token
-    return;
-  }
+// function checkLoginAndFetchUserData() {
+//   const loginToken = getCookie("auth_token");
+//   if (!loginToken) {
+//     redirect("home.html"); // Arahkan ke login jika tidak ada token
+//     return;
+//   }
 
-  // Ambil informasi pengguna dari backend
-  getJSON(
-    "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qr/user/me",
-    null,
-    loginToken,
-    handleUserDataResponse,
-    handleFetchError
-  );
-}
+//   // Ambil informasi pengguna dari backend
+//   getJSON(
+//     "https://asia-southeast2-qrcreate-447114.cloudfunctions.net/qr/user/me",
+//     null,
+//     loginToken,
+//     handleUserDataResponse,
+//     handleFetchError
+//   );
+// }
 
 // Callback untuk menangani respons sukses dari backend
-function handleUserDataResponse(result) {
-  if (result.status === 200 && result.data.username) {
-    // Set nama pengguna di navbar
-    setInner("user-info", `<span>Welcome, ${result.data.username} 👋</span>
-      <button id="logoutBtn" class="btn">Logout</button>`);
-    setupLogoutButton();
-  } else {
-    redirect("login.html");
-  }
-}
+// function handleUserDataResponse(result) {
+//   if (result.status === 200 && result.data.username) {
+//     // Set nama pengguna di navbar
+//     setInner("user-info", `<span>Welcome, ${result.data.username} 👋</span>
+//       <button id="logoutBtn" class="btn">Logout</button>`);
+//     setupLogoutButton();
+//   } else {
+//     redirect("login.html");
+//   }
+// }
 
 // Callback untuk menangani error saat mengambil data pengguna
-function handleFetchError(error) {
-  console.error("Failed to fetch user data:", error);
-  redirect("login.html");
-}
+// function handleFetchError(error) {
+//   console.error("Failed to fetch user data:", error);
+//   redirect("login.html");
+// }
 
 // Fungsi untuk logout
 function setupLogoutButton() {
@@ -45,31 +45,29 @@ function setupLogoutButton() {
   logoutBtn.addEventListener("click", function () {
     deleteCookie("auth_token"); // Hapus cookie
     alert("Anda telah logout. Mengarahkan ke halaman login...");
-    redirect("login.html");
+    redirect("index.html");
   });
 }
 
 // Fungsi untuk mengubah tab aktif
-function openTab(tabName) {
-  // Menyembunyikan semua tab
+export function openTab(tabName) {
+  console.log(`Tab yang dipilih: ${tabName}`);
+  
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach((tab) => {
     tab.classList.remove('active');
   });
 
-  // Menghilangkan kelas 'active' dari semua tombol tab
   const buttons = document.querySelectorAll('.tab-btn');
   buttons.forEach((button) => {
     button.classList.remove('active');
   });
 
-  // Menampilkan tab yang sesuai
   const activeTab = document.getElementById(tabName);
   if (activeTab) {
     activeTab.classList.add('active');
   }
 
-  // Menandai tombol tab yang sesuai sebagai aktif
   const activeButton = Array.from(buttons).find((button) => {
     return button.textContent.toLowerCase() === tabName;
   });
@@ -77,7 +75,6 @@ function openTab(tabName) {
     activeButton.classList.add('active');
   }
 }
-
 
 // Fungsi untuk Generate QR Code
 function generateQRCode(type) {
