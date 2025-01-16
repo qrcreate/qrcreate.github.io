@@ -67,7 +67,7 @@ function register() {
                     timer: 3000,
                     timerProgressBar: true,
                     willClose: () => {
-                        redirect("/qr");
+                        window.location.href = "../home.html";
                     },
                 });
             } else {
